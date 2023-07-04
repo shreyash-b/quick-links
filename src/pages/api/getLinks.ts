@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get } from "firebase/database";
 import { NextApiRequest, NextApiResponse } from "next";
-import firebaseConfig from "../../../files/firebaseConfig.json";
+import firebaseConfig from "../../files/firebaseConfig.json";
 
 export default function handler(
   req: NextApiRequest,
