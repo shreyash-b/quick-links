@@ -18,3 +18,5 @@ export default function LinkCard(props: CardProps) {
     </Link>
   );
 }
+
+export type CardInfo = CardProps['cardInfo']
