@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Card from "./Card";
 
 type CardProps = {
   cardInfo: {
@@ -9,12 +10,12 @@ type CardProps = {
 
 export default function LinkCard(props: CardProps) {
   return (
-    <Link
-      href={props.cardInfo.linkAddress}
-      target="_blank"
-      className="aspect-square w-[8rem] text-xl grid place-items-center text-center  text-white-100 font-thin bg-white/[0.15] rounded-xl"
-    >
-      {props.cardInfo.linkTitle}
-    </Link>
+    <Card>
+      <Link href={props.cardInfo.linkAddress} className="h-full w-full grid place-content-center" target="_blank">
+        {props.cardInfo.linkTitle}
+      </Link>
+    </Card>
   );
 }
+
+export type CardInfo = CardProps["cardInfo"];
