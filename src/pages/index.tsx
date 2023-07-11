@@ -1,15 +1,22 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import InputText from "../Components/InputText";
 import Button from "../Components/Button";
 
 export default function Home() {
   const router = useRouter();
   const [id, setId] = useState("");
-
+  
+  
   const navigateLinksPage = () => {
     router.push(`/${id}`);
   };
+  
+  const handleInputKeydown = (e: KeyboardEvent) => {
+    if(e.key === "Enter"){
+      navigateLinksPage();
+    }
+  }
 
   return (
     <div className="flex w-full h-full justify-center items-center flex-col">
@@ -18,7 +25,9 @@ export default function Home() {
       <span className="text-2xl">
         <InputText
           placeholder="Enter username..."
-          onChange={(e: any) => setId(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setId(e.target.value)}
+          onKeyDown={handleInputKeydown}
+          className="max-w-lg"
         />
         <Button onClick={navigateLinksPage}>GO</Button>
       </span>
