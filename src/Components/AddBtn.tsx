@@ -1,6 +1,5 @@
-import Image from "next/image";
-import addSVG from "../files/add.svg";
 import Card from "./Card";
+import Button from "./Button";
 
 function Icon() {
   return (
@@ -31,12 +30,12 @@ function Icon() {
   );
 }
 
-export default function AddBtn() {
+export default function AddBtn(props: any) {
   return (
     <Card>
-      <div className="h-[78%]">
+      <Button className="border-none" onClick={props.onClick}>
         <Icon />
-      </div>
+      </Button>
     </Card>
   );
 }

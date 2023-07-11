@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
+import InputText from "../Components/InputText";
+import Button from "../Components/Button";
 
 export default function Home() {
   const router = useRouter();
@@ -14,18 +16,11 @@ export default function Home() {
       <h1 className="text-5xl text-center select-none py-5"> Quick Links </h1>
 
       <span className="text-2xl">
-        <input
-          type="text"
+        <InputText
           placeholder="Enter username..."
-          className="max-w-[15rem] outline-none p-3 m-1 bg-[#ffffff0f] border-solid border-teal-800 border-2 rounded"
-          onChange={(e)=>setId(e.target.value)}
+          onChange={(e: any) => setId(e.target.value)}
         />
-        <input
-          type="button"
-          value="GO!"
-          className="m-1 border-solid border-2 border-teal-800 rounded p-3"
-          onClick={navigateLinksPage}
-        />
+        <Button onClick={navigateLinksPage}>GO</Button>
       </span>
     </div>
   );
