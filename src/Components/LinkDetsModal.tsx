@@ -1,43 +1,50 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import InputText from "./InputText";
 import Button from "./Button";
 
 export default function LinkDetsModal(props: any) {
-  const linkInfo = useRef({
-    linkTitle: "",
-    linkAddress: "",
-  });
+  const [linkTitle, setLinkTitle] = useState(props.currLinkInfo.linkTitle);
+  const [linkAddress, setLinkAddress] = useState(props.currLinkInfo.linkAddress);
 
   const handleChange = (e: any) => {
     const changeType: string = e.target.name;
-    linkInfo.current[changeType] = e.target.value;
+    switch (changeType) {
+      case "linkTitle":
+        setLinkTitle(e.target.value);
+        break;
+
+      case "linkAddress":
+        setLinkAddress(e.target.value);
+        break;
+
+      default:
+        break;
+    }
   };
 
   const handleAdd = () => {
-    const linkTitle = linkInfo.current.linkTitle;
-    const linkAddress = linkInfo.current.linkAddress;
-
-    props.addLinkFunc({ linkTitle, linkAddress });
+    props.addLinkFunc(linkTitle, linkAddress);
   };
 
   return (
     <div
-      className={`fixed h-screen w-screen backdrop-blur grid place-items-center ${
-        props.display ? "block" : "hidden"
-      }`}
+      className={"fixed h-screen w-screen backdrop-blur z-10 grid place-items-center"}
     >
       <div className="text-black bg-slate-300 p-2 rounded-xl">
         <div>
           <InputText
             name="linkTitle"
+            type="name"
             onChange={handleChange}
             placeholder="Enter Link Title"
+            value={linkTitle}
           />
           <InputText
             name="linkAddress"
             type="url"
             onChange={handleChange}
             placeholder="Enter Link Address"
+            value={linkAddress}
           />
         </div>
 
